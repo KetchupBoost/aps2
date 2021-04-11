@@ -92,51 +92,57 @@
                                     <input type="number" class="form-control" name="fourth_B" id="exampleInputPassword1" placeholder="Nota">
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-xl js-scroll-trigger" type="submit" id="submit" name="submit">Começar</button>
+                            <button class="btn btn-primary btn-xl js-scroll-trigger" type="button" id="submit" name="submit">Começar</button>
                         </form>
                     </div>
                 </div>
             </div>
         </header>
         <!-- About -->
-        <section class="page-section bg-primary">
+        <section id="about" class="page-section bg-primary">
             <div class="about">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 text-center">
                             <?php 
-                                if(!empty(
-                                    $_POST["student_name"] &&
-                                    $_POST["student_course"] &&
+                                if(isset(
+                                    $_POST["student_name"],
+                                    $_POST["student_course"],
                                     $_POST["professor"]
-                                )){
-
-
-                                    $name = $_POST["student_name"];
-                                    $course = $_POST["student_course"];
-                                    $professor = $_POST["professor"];
-                                    $discipline = $_POST["discipline"];
-                                    $b1 = $_POST["first_B"];
-                                    $b2 = $_POST["second_B"];
-                                    $b3 = $_POST["third_B"];
-                                    $b4 = $_POST["fourth_B"];
-                                
-                                
-                                    $average = ($b1 + $b2 + $b3 + $b4)/4; 
-                
-                                    if ($average <= 10) {
-                                        $result = "Aprovado";
-                                    } elseif($average < 7) {
-                                        $result = "Recuperação";
-                                    } elseif($average < 4) {
-                                        $result = "Reprovado";
-                                    }
+                                )) {
+                                    if(!empty(
+                                        $_POST["student_name"] &&
+                                        $_POST["student_course"] &&
+                                        $_POST["professor"]
+                                    )){
+    
+    
+                                        $name = $_POST["student_name"];
+                                        $course = $_POST["student_course"];
+                                        $professor = $_POST["professor"];
+                                        $discipline = $_POST["discipline"];
+                                        $b1 = $_POST["first_B"];
+                                        $b2 = $_POST["second_B"];
+                                        $b3 = $_POST["third_B"];
+                                        $b4 = $_POST["fourth_B"];
+                                    
+                                    
+                                        $average = ($b1 + $b2 + $b3 + $b4)/4; 
                     
-                                    echo '<h2 class="text-white mt-0">'.$name.' está '.$result.'</h2>';
-                                    echo '<h2 class="text-white mt-0">Sua Média é: '.$average.'</h2>';
-                                    echo '<hr class="divider light my-4" />';
-                                    echo '<p class="text-white-50 mb-4"><span class="text-white"> Nome </span>: '.$name.' <span class="text-white"> Professor</span>: '.$professor.'</p>';
-                                    echo '<p class="text-white-50 mb-4"><span class="text-white">Disciplina </span>: '.$discipline.'<span class="text-white"> Curso </span>: '.$course.'</p>';
+                                        if ($average <= 10) {
+                                            $result = "Aprovado";
+                                        } elseif($average < 7) {
+                                            $result = "Recuperação";
+                                        } elseif($average < 4) {
+                                            $result = "Reprovado";
+                                        }
+                        
+                                        echo '<h2 class="text-white mt-0">'.$name.' está '.$result.'</h2>';
+                                        echo '<h2 class="text-white mt-0">Sua Média é: '.$average.'</h2>';
+                                        echo '<hr class="divider light my-4" />';
+                                        echo '<p class="text-white-50 mb-4"><span class="text-white"> Nome </span>: '.$name.' <span class="text-white"> Professor</span>: '.$professor.'</p>';
+                                        echo '<p class="text-white-50 mb-4"><span class="text-white">Disciplina </span>: '.$discipline.'<span class="text-white"> Curso </span>: '.$course.'</p>';
+                                    }
                                 }
                             ?>
                         </div>
@@ -158,7 +164,7 @@
         <script>
             $(document).ready(function () {
                 
-                $("submit").click(function(){
+                $("#submit").click(function(){
                 
                     $("#about").css("display", "block");
 
